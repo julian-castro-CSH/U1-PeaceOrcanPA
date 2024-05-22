@@ -1,0 +1,415 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body{
+  overflow: -moz-scrollbars-horizontal;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*navbar css */
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-135deg, #ff004c, #ff1a1a);
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+  /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+  clip-path: circle(25px at calc(100% - 45px) 45px);
+  transition: all 0.1s ease-in-out;
+}
+
+#active:checked~.wrapper {
+  clip-path: circle(75%);
+}
+
+.menu-btn {
+  position: fixed;
+  z-index: 2;
+  right: 20px;
+  /* left: 20px; */
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  background: linear-gradient(-135deg, #ff6675, #fd4949);
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+  transition: all 0.3s ease-in-out;
+}
+
+#active:checked~.menu-btn {
+  background: #ffffff;
+  color: #4158d0;
+}
+
+#active:checked~.menu-btn i:before {
+  content: "\f00d";
+}
+
+.wrapper ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+
+.wrapper ul li {
+  margin: 15px 0;
+}
+
+.wrapper ul li a {
+  color: none;
+  font-family: 'Bebas Neue', sans-serif;
+  text-decoration: none;
+  font-size: 75px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #ffffff;
+  position: relative;
+  line-height: 100px;
+  transition: all 0.3s ease;
+  letter-spacing: -3px;
+  transition: 700ms ease;
+  font-variation-settings: "wght" 311;
+  margin-bottom: 0.8rem;
+}
+
+.tabs:hover {
+  font-variation-settings: "wght" 582; 
+  letter-spacing: 4px;
+}
+
+.wrapper ul li a:after {
+  position: absolute;
+  content: "";
+  background: #ffffff;
+  width: 100%;
+  height: 95px;
+  left: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0s ease;
+}
+
+.wrapper ul li a:hover:after {
+  transform: scaleY(1);
+}
+
+.wrapper ul li a:hover {
+  color: #ff004c;
+   overflow: hidden;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/* end of navbar css */
+
+/* FROM ' https://dev.to/sulaimonolaniran/building-a-simple-quiz-with-html-css-and-javascript-4elp ' */
+*{
+  margin: 0;
+  padding: 0;
+
+}
+
+main{
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 75px;
+  left: 325px;
+  right: 0;
+  bottom: 0;
+ 
+}
+.game-quiz-container{
+  width: 40rem;
+  height: 30rem;
+  background:linear-gradient(-135deg, #ff004c, #ff1a1a);
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 30px;
+}
+.game-details-container{
+  width: 80%;
+  height: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.game-details-container h1{
+  font-size: 1.2rem;
+}
+.game-question-container{
+  width: 80%;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 25px;
+}
+.game-question-container h1{
+  font-size: 1.7rem;
+  text-align: center;
+  padding: 3px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+.game-options-container{
+  width: 80%;
+  height: 12rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.game-options-container span{
+  width: 45%;
+  height: 5rem;
+  border-image: linear-gradient(-135deg, #ffb3c9, #f1e9e9) 30;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 100%
+  
+}
+span label{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 25px;
+  transition: transform 0.3s;
+  font-weight: 600;
+  color: rgb(22, 22, 22);
+}
+span label:hover{
+  -ms-transform: scale(1.12);
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  color: white;
+}
+input[type="radio"] {
+  position: relative;
+  display: none;
+}
+input[type=radio]:checked ~ .option {
+  background: #fff824;
+}
+.next-button-container{
+  width: 50%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}
+.next-button-container button{
+  width: 8rem;
+  height: 2rem;
+  border-radius: 10px;
+  background: none;
+  color: rgb(25, 25, 25);
+  font-weight: 600;
+  border: 2px solid white;
+  cursor: pointer;
+  outline: none;
+}
+.next-button-container button:hover{
+  background-color: rgb(255, 255, 255);
+}
+.modal-container{
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  -webkit-animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 1.2s ease-in-out;
+}
+.modal-content-container{
+  height: 20rem;
+  width: 25rem;
+  background-color: rgb(43, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 25px;
+}
+.modal-content-container h1{
+  font-size: 1.3rem;
+  height: 3rem;
+  color: lightgray;
+  text-align: center;
+}
+.grade-details{
+  width: 15rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.grade-details p{
+  color: white;
+  text-align: center;
+}
+.modal-button-container{
+  height: 2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-button-container button{
+  width: 10rem;
+  height: 2rem;
+  background: none;
+  outline: none;
+  border: 1px solid rgb(252, 242, 241);
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.modal-button-container button:hover{
+  background-color: rgb(83, 82, 82);
+}
+
+@media(min-width : 300px) and (max-width : 350px){
+  .game-quiz-container{
+      width: 90%;
+      height: 80vh;
+   }
+   .game-details-container h1{
+      font-size: 0.8rem;
+   }
+
+   .game-question-container{
+      height: 6rem;
+   }
+   .game-question-container h1{
+     font-size: 0.9rem;
+  }
+
+  .game-options-container span{
+      width: 90%;
+      height: 2.5rem;
+  }
+  .game-options-container span label{
+      font-size: 0.8rem;
+  }
+  .modal-content-container{
+      width: 90%;
+      height: 25rem;
+  }
+
+  .modal-content-container h1{
+      font-size: 1.2rem;
+  }
+}
+
+@media(min-width : 350px) and (max-width : 700px){
+ .game-quiz-container{
+     width: 90%;
+     height: 80vh;
+  }
+  .game-details-container h1{
+      font-size: 1rem;
+  }
+
+  .game-question-container{
+      height: 8rem;
+  }
+
+  .game-question-container h1{
+      font-size: 0.9rem;
+   }
+
+  .game-options-container span{
+      width: 90%;
+  }
+  .modal-content-container{
+      width: 90%;
+      height: 25rem;
+  }
+  .modal-content-container h1{
+      font-size: 1.2rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* gallery css */
+#gallery {
+   line-height:0;
+   -webkit-column-count:5; /* split it into 5 columns */
+   -webkit-column-gap:5px; /* give it a 5px gap between columns */
+   -moz-column-count:5;
+   -moz-column-gap:5px;
+   column-count:5;
+   column-gap:5px;
+   overflow: hidden;
+}
+#gallery .galimg {
+   width: 100% !important;
+   height: auto !important;
+   margin-bottom:5px; /* to match column gap */
+}
+@media (max-width: 1200px) {
+   #gallery {
+    -moz-column-count:    4;
+    -webkit-column-count: 4;
+    column-count:         4;
+   }
+}
+.galimg:hover{
+transform: scale(1.09);
+  transition: 1s;
+}
+#gallery{
+  background-color: black;
+}
+/* END OF GALLERY CSS */
